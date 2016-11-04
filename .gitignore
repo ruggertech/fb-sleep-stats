@@ -8,3 +8,4 @@ npm-debug.log
 src/server/services/db.json
 .env
 .vscode/
+.idea/*
