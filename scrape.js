@@ -1,10 +1,16 @@
 var _ = require('lodash');
 var config = require('config');
-var fbCookie = config.get('fbCookie');
 var fbSleep = require('fb-sleep');
 var userService = require('./src/server/services/user');
 var TEN_MINUTES = 1000 * 60 * 10;
 var pollingInterval = (config.pollingInterval * 1000) || TEN_MINUTES;
+
+var fbCookie = config.get('fbCookie');
+if (!fbCookie) {
+    // when missing the config file, try reading from an environment varible (Heroku)
+    console.log("Could not read fbCooke from configuration, falling back to environment variable");
+    fbCookie = process.env.FBCOOKIE;
+}
 
 function getRandomDelay() {
     return _.random(pollingInterval * 0.9, pollingInterval);

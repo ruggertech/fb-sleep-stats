@@ -2,10 +2,15 @@ var webpack = require('webpack');
 var path = require('path');
 var config = require('config');
 
+var fbAppId = config.appId;
+if(!fbAppId) {
+    fbAppId = process.env.FBAPPID;
+}
+
 module.exports = {
     entry: path.resolve(__dirname, 'src', 'browser', 'main.js'),
     plugins: [new webpack.DefinePlugin({
-        __FBAPPID__: config.appId
+        __FBAPPID__: fbAppId 
     })],
     output: {
         path: path.resolve(__dirname, 'public'),
