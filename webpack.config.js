@@ -7,7 +7,7 @@ if(!fbAppId) {
     console.log("About to read APP Id from environment variable");
     fbAppId = process.env.FBAPPID;
 } else {
-    console.log("Read fbAppId from config file");
+    console.log(`Read fbAppId from config file: '${fbAppId}'`);
 }
 
 module.exports = {
