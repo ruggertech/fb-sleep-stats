@@ -5,14 +5,9 @@ var userService = require('./src/server/services/user');
 var TEN_MINUTES = 1000 * 60 * 10;
 var pollingInterval = (config.pollingInterval * 1000) || TEN_MINUTES;
 
-var fbCookie = config.get('fbCookie');
-if (!fbCookie) {
-    // when missing the config file, try reading from an environment variable (Heroku)
-    console.log("Could not read fbCookie from configuration, falling back to environment variable");
-    fbCookie = process.env.FBCOOKIE;
-} else {
-    console.log(`Read cookie from config file: ${JSON.stringify(fbCookie)}`);
-}
+// first try to setting from environment variables
+var fbCookie = process.env.FBCOOKIE || config.get('fbCookie');
+
 
 function getRandomDelay() {
     return _.random(pollingInterval * 0.9, pollingInterval);
