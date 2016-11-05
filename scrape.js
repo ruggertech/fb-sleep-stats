@@ -6,7 +6,7 @@ var TEN_MINUTES = 1000 * 60 * 10;
 var pollingInterval = (config.pollingInterval * 1000) || TEN_MINUTES;
 
 // first try to setting from environment variables
-var fbCookie = process.env.FBCOOKIE || config.get('fbCookie');
+var fbCookie = JSON.parse(process.env.FBCOOKIE) || config.get('fbCookie');
 
 
 function getRandomDelay() {
