@@ -25,5 +25,7 @@ process.on('uncaughtException', function(err) {
 });
 
 // Start app
+// Heroku requires dynamically setting a port using the env variables
+PORT = process.env.PORT || PORT || 5000;
 app.listen(PORT);
 console.log('Running on http://localhost:' + PORT);
