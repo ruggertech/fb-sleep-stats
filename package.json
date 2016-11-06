@@ -7,7 +7,7 @@
     "node": "6.8.1"
   },
   "scripts": {
-    "heroku-postbuild": "webpack --config ./webpack.config.js --progress --colors",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress --colors",
     "start": "nf start",
     "scrape": "node ./scrape.js",
     "forever-scrape": "forever -a start -l scrape.log scrape.js",
