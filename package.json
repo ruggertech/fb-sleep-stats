@@ -4,10 +4,11 @@
   "description": "Track when people are awake through Facebook",
   "main": "index.js",
   "engines": {
-    "node": "6.8.1"
+    "node": "6.8.1",
+    "npm": "3.10.9"
   },
   "scripts": {
-    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress --colors",
+    "heroku-postbuild": "webpack --config ./webpack.config.js --display-error-details --watch",
     "start": "nf start",
     "scrape": "node ./scrape.js",
     "forever-scrape": "forever -a start -l scrape.log scrape.js",
